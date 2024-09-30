@@ -32,11 +32,11 @@ export class ModalUsuarioComponent implements OnInit{
     private _utilidadServicio:UtilidadService
   ){
     this.formularioUsuario = this.fb.group({
-      nombreCompleto: ["", Validators.required],  // Corregido: Comillas bien colocadas
+      nombre: ["", Validators.required],  // Corregido: Comillas bien colocadas
       correo: ["", Validators.required], 
       idRol: ["", Validators.required], 
       clave: ["", Validators.required], 
-      esActivo: ["1", Validators.required], 
+      status: ["1", Validators.required], 
     });
 
     if(this.datosUsuario !=null){
@@ -46,8 +46,8 @@ export class ModalUsuarioComponent implements OnInit{
 
     this._rolServicio.listaRoles(1).subscribe({
       next:(data)=>{
-        if(data.CodigoError===-1){
-          this.listaRoles=data.Result
+        if(data.codigoError===-1){
+          this.listaRoles=data.result
         }
       },
       error:(e) =>{}
@@ -82,7 +82,7 @@ export class ModalUsuarioComponent implements OnInit{
     if (this.datosUsuario == null) {
       this._usuarioServicio.guardarUsuario(_usuario).subscribe({
         next: (data) => {
-          if (data.CodigoError === -1) {  // Verificamos si data.status es verdadero
+          if (data.codigoError === -1) {  // Verificamos si data.status es verdadero
             this._utilidadServicio.mostrarAlerta("El usuario fue registrado", "Éxito");
             this.modalActual.close("true")
           }else{
@@ -98,7 +98,7 @@ export class ModalUsuarioComponent implements OnInit{
 
       this._usuarioServicio.editarUsuario(_usuario).subscribe({
         next: (data) => {
-          if (data.CodigoError === -1) {  // Verificamos si data.status es verdadero
+          if (data.codigoError === -1) {  // Verificamos si data.status es verdadero
             this._utilidadServicio.mostrarAlerta("El usuario fue editado", "Éxito");
             this.modalActual.close("true")
           }else{

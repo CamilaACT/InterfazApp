@@ -1,6 +1,6 @@
 export interface ResponseApi {
-    CodigoError: number,
-    Message: string,
-    Result: any
+    codigoError: number,
+    message: string,
+    result: any
 
 }

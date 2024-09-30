@@ -29,8 +29,8 @@ constructor(
 obtenerUsuarios(){
   this._usuarioServicio.listaUsuarios(1).subscribe({
     next: (data) => {
-      if (data.CodigoError === -1) {  // Verificamos si data.status es verdadero
-        this.dataListaUsarios.data=data.Result
+      if (data.codigoError === -1) {  // Verificamos si data.status es verdadero
+        this.dataListaUsarios.data=data.result
       }else{
         this._utilidadServicio.mostrarAlerta("No se encontraron datos", "Error");
       }
@@ -87,7 +87,7 @@ obtenerUsuarios(){
       if(resultado.isConfirmed){
         this._usuarioServicio.eliminarUsuario(usuario.idUsuario).subscribe({
           next:(data)=>{
-            if(data.CodigoError === -1){
+            if(data.codigoError === -1){
               this._utilidadServicio.mostrarAlerta("El usuario fue eliminado","Listo!");
               this.obtenerUsuarios();
             }else{

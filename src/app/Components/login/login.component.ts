@@ -44,11 +44,11 @@ export class LoginComponent implements OnInit {
 
     this._usuarioServicio.IniciarSesion(request).subscribe({
       next:(data)=>{
-        if(data.CodigoError == -1){
-          this._utilidadServicio.guardarSesionUsuario(data.Result);
+        if(data.codigoError === -1){
+          this._utilidadServicio.guardarSesionUsuario(data.result);
           this.router.navigate(["pages"])
         }else{
-          this._utilidadServicio.mostrarAlerta(data.Message,"Intentelo nuevamente")
+          this._utilidadServicio.mostrarAlerta(data.message,"Intentelo nuevamente")
         }
       },
       complete:()=>{
