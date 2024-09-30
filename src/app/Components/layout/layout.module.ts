@@ -6,6 +6,8 @@ import { UsuarioComponent } from './Pages/usuario/usuario.component';
 import { SharedModule } from '../../Reutilizable/shared/shared.module';
 
 
+
+
 @NgModule({
   declarations: [
     UsuarioComponent
