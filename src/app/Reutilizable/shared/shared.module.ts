@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 
 
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withFetch } from '@angular/common/http';
 
 // Angular Material Modules
 import { MatCardModule } from '@angular/material/card';
@@ -39,7 +39,6 @@ import { MomentDateModule } from '@angular/material-moment-adapter';
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule,
     MatCardModule,
     MatInputModule,
     MatSelectModule,
@@ -64,7 +63,8 @@ import { MomentDateModule } from '@angular/material-moment-adapter';
   ],
   providers:[
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    provideHttpClient(withFetch()) 
 
   ]
 

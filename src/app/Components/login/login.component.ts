@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
 
     this._usuarioServicio.IniciarSesion(request).subscribe({
       next:(data)=>{
-        if(data.CodigoError = -1){
+        if(data.CodigoError == -1){
           this._utilidadServicio.guardarSesionUsuario(data.Result);
           this.router.navigate(["pages"])
         }else{
