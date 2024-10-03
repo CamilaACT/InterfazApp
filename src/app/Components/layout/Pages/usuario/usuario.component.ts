@@ -7,6 +7,8 @@ import { Usuario } from '../../../../interfaces/usuario';
 import { UsuarioService } from '../../../../Services/usuario.service';
 import { UtilidadService } from '../../../../Reutilizable/utilidad.service';
 import Swal from 'sweetalert2'
+import { UsurioId } from '../../../../interfaces/usuario-id';
+import { UsurioNombre } from '../../../../interfaces/usuario-nombre';
 @Component({
   selector: 'app-usuario',
   templateUrl: './usuario.component.html',
@@ -16,6 +18,7 @@ export class UsuarioComponent implements OnInit,AfterViewInit {
 columnasTable:string[]=["nombre","correo","rolDescripcion","estado","acciones"];
 dataInicio:Usuario[]=[];
 dataListaUsarios=new MatTableDataSource(this.dataInicio);
+usuarioId: UsurioId={ idUsuario: 1 };
 @ViewChild(MatPaginator) paginacionTabla!:MatPaginator;
 
 constructor(
@@ -27,7 +30,8 @@ constructor(
 ){}
 
 obtenerUsuarios(){
-  this._usuarioServicio.listaUsuarios(1).subscribe({
+
+  this._usuarioServicio.listaUsuarios(this.usuarioId).subscribe({
     next: (data) => {
       if (data.codigoError === -1) {  // Verificamos si data.status es verdadero
         this.dataListaUsarios.data=data.result
@@ -41,6 +45,9 @@ obtenerUsuarios(){
 }})
 }
   ngOnInit(): void {
+    this.dataListaUsarios.filterPredicate = (data: Usuario, filter: string) => {
+      return data.nombre.toLowerCase().includes(filter) || data.correo.toLowerCase().includes(filter);
+    };
     this.obtenerUsuarios();
     
   }
@@ -50,8 +57,15 @@ obtenerUsuarios(){
 
   aplicarFiltroTabla(event:Event){
     const filterValue = (event.target as HTMLInputElement).value;
-    this.dataListaUsarios.filter=filterValue.trim().toLocaleLowerCase();
+    //this.dataListaUsarios.filter=filterValue.trim().toLocaleLowerCase();
+    this.buscarUsuarioPorNombre(filterValue);
   }
+
+  aplicarFiltroTablaLocal(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataListaUsarios.filter = filterValue.trim().toLowerCase();  // Aplicar el filtro a la tabla
+  }
+  
 
   nuevoUsuario(){
     this.dialog.open(ModalUsuarioComponent,{
@@ -102,6 +116,27 @@ obtenerUsuarios(){
       }
     })
 
+  }
+
+  buscarUsuarioPorNombre(nombre: string) {
+    if (nombre.trim() === '') {
+      this.obtenerUsuarios(); // Si el campo está vacío, cargar todos los usuarios
+    } else {
+      const objetoUsuNombre: UsurioNombre = { nombre: nombre.trim() };
+      this._usuarioServicio.buscarUsuario(objetoUsuNombre).subscribe({
+        next: (data) => {
+          if (data.codigoError === -1) {
+            this.dataListaUsarios.data = data.result;  // Actualizar la tabla con los resultados
+          } else {
+            this._utilidadServicio.mostrarAlerta("No se encontraron datos", "Error");
+          }
+        },
+        error: (err) => {
+          this._utilidadServicio.mostrarAlerta("Ocurrió un error durante la búsqueda", "Error");
+          console.error(err);
+        }
+      });
+    }
   }
 
 

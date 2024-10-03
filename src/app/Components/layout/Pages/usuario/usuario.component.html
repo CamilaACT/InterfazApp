@@ -10,10 +10,18 @@
     <mat-divider></mat-divider>
 
     <mat-card-content class="dashboard-card-content">
+  <!-- 
         <mat-form-field appearance="outline">
                 <mat-label>Buscar</mat-label>
-                <input matInput (Keyup)="aplicarFiltroTabla($event)"#input>
-        </mat-form-field>
+                <input matInput (keyup)="aplicarFiltroTabla($event)"#input>
+        </mat-form-field><object data="" type=""></object>
+    -->
+
+        <mat-form-field appearance="outline">
+            <mat-label>Buscar</mat-label>
+            <input matInput (keyup)="aplicarFiltroTablaLocal($event)" placeholder="Buscar por nombre o correo">
+          </mat-form-field>
+          
         <div class="mat-elevation-z2">
             <table mat-table [dataSource]="dataListaUsarios">
 
@@ -52,14 +60,14 @@
 
                 <tr mat-header-row *matHeaderRowDef="columnasTable"></tr>
                 <tr mat-row *matRowDef="let row; columns: columnasTable; "></tr>
-
+<!-- 
                 <tr class="mat-row" *matNote>
                     <td class="mat-cell" colspan="4">
                             No hay datos que coincidan con el filtro "{{input.value}}"
                     </td>
                 </tr>
 
-
+-->
 
                   
 

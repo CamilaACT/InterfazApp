@@ -6,6 +6,8 @@ import { environment } from '../environments/environment.prod';
 import { ResponseApi } from '../interfaces/response-api';
 import { Login } from '../interfaces/login';
 import { Usuario } from '../interfaces/usuario';
+import { UsurioNombre } from '../interfaces/usuario-nombre';
+import { UsurioId } from '../interfaces/usuario-id';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +21,7 @@ export class UsuarioService {
     return this.http.post<ResponseApi>(`${this.urlApi}login`, request);
   }
 
-  listaUsuarios(request:number):Observable<ResponseApi>{
+  listaUsuarios(request:UsurioId):Observable<ResponseApi>{
     return this.http.post<ResponseApi>(`${this.urlApi}listaUsuarios`, request);
   }
 
@@ -31,7 +33,7 @@ export class UsuarioService {
     return this.http.put<ResponseApi>(`${this.urlApi}editar`, request);
   }
 
-  buscarUsuario(request:number):Observable<ResponseApi>{
+  buscarUsuario(request:UsurioNombre):Observable<ResponseApi>{
     return this.http.post<ResponseApi>(`${this.urlApi}buscar`, request);
   }
 
