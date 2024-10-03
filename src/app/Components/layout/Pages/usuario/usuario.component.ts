@@ -95,7 +95,7 @@ obtenerUsuarios(){
             }
           },
           error:(e)=>{
-            this._utilidadServicio.mostrarAlerta("NO se puedo eliminar el usuario","Error Final");
+            this._utilidadServicio.mostrarAlerta("NO se puedo eliminar el usuario2","Error Final");
           }
 
         })

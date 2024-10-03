@@ -59,11 +59,11 @@ export class ModalUsuarioComponent implements OnInit{
    ngOnInit(): void {
      if(this.datosUsuario!=null){
       this.formularioUsuario.patchValue({
-        nombreCompleto: this.datosUsuario.nombre,  // Corregido: Comillas bien colocadas
+        nombre: this.datosUsuario.nombre,  // Corregido: Comillas bien colocadas
         correo: this.datosUsuario.correo, 
         idRol: this.datosUsuario.idRol, 
         clave: this.datosUsuario.clave, 
-        esActivo: this.datosUsuario.status , 
+        status: this.datosUsuario.status , 
       })
      }
    }
@@ -71,13 +71,13 @@ export class ModalUsuarioComponent implements OnInit{
    guardarEditar_Usuario() {
     const _usuario: Usuario = {
       idUsuario: this.datosUsuario == null ? 0 : this.datosUsuario.idUsuario,
-      nombre: this.formularioUsuario.value.nombreCompleto,
+      nombre: this.formularioUsuario.value.nombre,
       correo: this.formularioUsuario.value.correo,
       idRol: this.formularioUsuario.value.idRol,
       rolDescripcion: "", 
       clave: this.formularioUsuario.value.clave,
-      status: parseInt(this.formularioUsuario.value.esActivo)  // Asegúrate de que esActivo sea convertible a número
-    }
+      status: parseInt(this.formularioUsuario.value.status)  // Asegúrate de que esActivo sea convertible a número
+    };
 
     if (this.datosUsuario == null) {
       this._usuarioServicio.guardarUsuario(_usuario).subscribe({
