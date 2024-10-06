@@ -6,6 +6,7 @@
         </div>
 
         <mat-card-content style="padding-bottom: 15px;">
+            
             <form [formGroup]="formularioLogin"(ngSubmit)="iniciarSesion()">
                 <mat-form-field class="full-width" appearance="outline">
                     <mat-label>Email</mat-label>
@@ -28,12 +29,13 @@
                 </button>
             </form>
 
-
+            <div style="margin-top: 15px; text-align: left;">
+                <button mat-flat-button color="accent" (click)="registrarUsuario()">Registrar Usuario</button>
+            </div>
         </mat-card-content>
         <mat-card-footer>
-            <mat-progress-bar mode="indeterminate" *ngIf="mostrarLoading">
-
-            </mat-progress-bar>
+            <mat-progress-bar mode="indeterminate" *ngIf="mostrarLoading"></mat-progress-bar>
+           
         </mat-card-footer>
 
     </mat-card>

@@ -5,6 +5,7 @@ import { LayoutRoutingModule } from './layout-routing.module';
 import { UsuarioComponent } from './Pages/usuario/usuario.component';
 import { SharedModule } from '../../Reutilizable/shared/shared.module';
 import { ModalUsuarioComponent } from './Modales/modal-usuario/modal-usuario.component';
+import { ModalRegistrarseComponent } from './Modales/modal-registrarse/modal-registrarse.component';
 
 
 
@@ -12,7 +13,8 @@ import { ModalUsuarioComponent } from './Modales/modal-usuario/modal-usuario.com
 @NgModule({
   declarations: [
     UsuarioComponent,
-    ModalUsuarioComponent
+    ModalUsuarioComponent,
+    ModalRegistrarseComponent
   ],
   imports: [
     CommonModule,
