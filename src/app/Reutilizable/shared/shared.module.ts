@@ -1,10 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-
-
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { provideHttpClient, withFetch } from '@angular/common/http';
+import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 
 // Angular Material Modules
 import { MatCardModule } from '@angular/material/card';
@@ -28,6 +26,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MomentDateModule } from '@angular/material-moment-adapter';
+import { authInterceptor } from '../../custom/auth.interceptor';
 
 @NgModule({
   declarations: [],
@@ -64,7 +63,7 @@ import { MomentDateModule } from '@angular/material-moment-adapter';
   providers:[
     MatDatepickerModule,
     MatNativeDateModule,
-    provideHttpClient(withFetch()) 
+    provideHttpClient(withFetch(),withInterceptors([authInterceptor])) 
 
   ]
 

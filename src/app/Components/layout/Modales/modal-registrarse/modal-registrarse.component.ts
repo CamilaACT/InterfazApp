@@ -72,7 +72,7 @@ export class ModalRegistrarseComponent implements OnInit {
       idUsuario: this.datosUsuario == null ? 0 : this.datosUsuario.idUsuario,
       nombre: this.formularioUsuario.value.nombre,
       correo: this.formularioUsuario.value.correo,
-      idRol: this.formularioUsuario.value.idRol,
+      idRol: 4,
       rolDescripcion: "", 
       clave: this.formularioUsuario.value.clave,
       status: parseInt(this.formularioUsuario.value.status)  // Asegúrate de que esActivo sea convertible a número

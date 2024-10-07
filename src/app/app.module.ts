@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './Components/login/login.component';
 import { LayoutComponent } from './Components/layout/layout.component';
 import { SharedModule } from './Reutilizable/shared/shared.module';
+import { provideHttpClient } from '@angular/common/http';
 
 
 
@@ -20,10 +21,13 @@ import { SharedModule } from './Reutilizable/shared/shared.module';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    SharedModule
+    SharedModule,
+    
   ],
   providers: [
-    provideClientHydration()
+    provideClientHydration(),
+  
+
   ],
   bootstrap: [AppComponent]
 })

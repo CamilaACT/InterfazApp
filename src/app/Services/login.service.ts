@@ -23,4 +23,9 @@ export class LoginService {
     return this.http.post<ResponseApi>(`${this.urlApi}registrarse`, request);
   }
 
+  validarToken(token:String):Observable<ResponseApi>{
+    return this.http.get<ResponseApi>(`${this.urlApi}validarToken?token=${token}`);
+  }
+
+
 }

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './layout.component';
 import { UsuarioComponent } from './Pages/usuario/usuario.component';
+import { authGuard } from '../../custom/auth.guard';
 
 const routes: Routes = [{
   path:"",
@@ -9,7 +10,8 @@ const routes: Routes = [{
   children:[
     {
       path:'usuarios',
-      component:UsuarioComponent
+      component:UsuarioComponent,
+      canActivate:[authGuard]
     }
   ]
 
