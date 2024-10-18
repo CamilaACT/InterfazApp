@@ -42,3 +42,6 @@ Este proyecto está enfocado en el manejo de autenticación mediante JWT en el c
 ### Guard de Autenticación
 
 El guard de autenticación `authGuard` se asegura de que solo los usuarios con un token JWT válido puedan acceder a ciertas rutas. Si el token es inválido o no existe, redirige a la página de inicio de sesión.
+
+## Interceptor de Autenticación
+El authInterceptor intercepta las solicitudes HTTP y añade el token JWT en las cabeceras de las peticiones. Si el token no está presente, las solicitudes a las rutas protegidas no se enviarán.
