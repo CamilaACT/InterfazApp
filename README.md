@@ -12,8 +12,8 @@ Este proyecto fue generado con [Angular CLI](https://github.com/angular/angular-
 6. [Autenticación y JWT](#autenticación-y-jwt)
    - [Guard de autenticación](#guard-de-autenticación)
    - [Interceptor de autenticación](#interceptor-de-autenticación)
-7. [Contribuciones](#contribuciones)
-8. [Licencia](#licencia)
+
+
 
 ## Servidor de desarrollo
 
